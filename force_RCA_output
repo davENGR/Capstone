@@ -12,3 +12,5 @@
 
 hdmi_ignore_hotplug=1
 
+#if need to look further into ways to possibly doing about this, look at the following reference:
+#www.raspberrypi.org/documentation/configuration/config-txt.md
