@@ -1,0 +1,14 @@
+#Within the /boot/config.txt file of the Raspberry Pi, edit it in such a way that you will be able to hard force the Pi
+#to output between HDMI and composite
+
+#hdmi_force_hotplug=1
+
+#the above statement should be left commented out, because what it does is it will set the visual output to HDMI even if no HDMI 
+#monitor is detected
+
+#in the case that you are wanting to use just HDMI outputs, then the config.txt will not need to be adjusted, and equally so
+#with RCA, you should not need to adjust it, but to allow for both to be connected and detected, but want to force the RCA, add 
+#the following
+
+hdmi_ignore_hotplug=1
+
