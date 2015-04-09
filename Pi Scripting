@@ -1,0 +1,70 @@
+#Source of information below: http://www.opentechguides.com/how-to/article/raspberry-pi/5/raspberry-pi-auto-start.html
+
+#GOAL: to auto login into the RaspPi upon startup:
+  #edit the inittab file
+  sudo nano /etc/inittab
+  #comment out the following line
+    1:2345:respawn:/sbin/getty 115200 tty1
+  #add the following line after the line you just commented out
+    1:2345:respawn:/bin/login -f pi tty1 </dev/ttyl >/dev/tty1 2>&1
+  #save and exit
+    Ctrl+X, then Y, then ENTER
+  
+#GOAL: to run a script after login
+  #edit the profile file
+    sudo nano /etc/profile
+  #add the following line at the end of the file
+    . /home/pi/name_of_file.sh
+  #except add the correct path and name of your script within that line
+  #save and exit
+  
+#Source of information below: http://www.instructables.com/id/Raspberry-Pi-Launch-Python-script-on-startup/?ALLSTEPS
+
+#GOAL: to launch a python script upon startup
+  #assuming you have already made a python file and have stored it in some directory
+  #STEP 1- make a launcher script
+    cd directory_of_your_python_file
+    nano launcher.sh
+    #type in the script
+      #!/bin/sh
+      #launcher.sh
+      #navigate to home directory, then to this directory, then execute python script, then back home
+      cd /
+      cd home/pi/your_python_file_directory
+      sudo python your_file_name
+      cd /
+      #save and exit
+      
+  #STEP 2- make your script an executable
+    chmod 755 launcher.sh
+    #test that this works by the following
+    sh launcher.sh
+    #which should launch your python code
+    
+  #STEP 3- add logs directory (for the daemontool to put error logs)
+    cd
+    mkdir logs
+    
+  #STEP 4- add to your crontab
+    sudo crontab -e
+    @reboot sh /home/pi/python_file_directory/launcher.sh >home/pi/logs/cronlog 2>&1
+    #What the above does is that the script will execute once upon startup
+    
+  #STEP 5- Reboot and test that it works
+    sudo reboot
+    #wait and see if script launches
+    #if it fails, check the log file
+      cd logs
+      cat cronlog
+    
+  #STEP6- Make an exit plan, such that it won't get stuck in an infinite loop
+    #if in a standard python script, you can always do
+      Ctrl+C
+      #which will force exit the process
+    #(important for later part of setting up project) if using pygames library, you can do an exit on keydown such as
+      while not done:
+        for event in pygame.event.get():
+          if event.type == KEYDOWN
+            down = True
+            
+  #DONE
