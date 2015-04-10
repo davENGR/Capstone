@@ -1,1 +1,12 @@
+#so this part of the project keeps me going rabbit trailing down many paths, all of which have been leading me nowhere
+#I have learned that DJB Daemontools is convoluted and hard to utilize on Debian Wheezy,
+#SysV-init is redundant, because the Wheezy distro is already using built using that form of architecture
+#crontab is an accepted linux cmd, and is minimally helpful in running python upon 
 
+
+#the following links both of us need to explore further
+  #https://pypi.python.org/pypi/python-daemon/         
+  #https://github.com/jimfenton/raspberry-gpio-daemon
+  
+  
+  
