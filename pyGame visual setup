@@ -1,0 +1,30 @@
+import pygame, sys
+from pygame.locals import *
+
+pygame.init()
+#set the display mode
+screen = pygame.display.set_mode((800, 600), pygame.FULLSCREEN,32)
+
+font = pygame.font.SysFont('chosen_font_type', 72) #modify with font type and size as needed
+text_Line1 = font.render('HD: ', True, BLACK)
+text_Line2 = font.render('AVE: ', True, BLACK)
+text_Line3 = font.render('WT: ', True, BLACK)
+
+
+pygame.display.set_caption('AuctionBox_Video')
+while True: #main loop
+	#set the color for either current or past displays
+	screen.fill(GREEN) #this sets it as GREEN
+	screen.fill(RED) #this sets it as RED
+	
+	for event in pygame.event.get()
+		if event.ype == QUIT:
+			pygame.quit()
+			sys.exit()
+		#else an even of reading in values	
+			#update lines 1 - 3
+		#else chosing upon the indicator to display as TX / OK version
+			#modify display
+			
+			
+	pygame.display.update()
