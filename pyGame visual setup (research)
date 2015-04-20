@@ -10,6 +10,9 @@ text_Line1 = font.render('HD: ', True, BLACK)
 text_Line2 = font.render('AVE: ', True, BLACK)
 text_Line3 = font.render('WT: ', True, BLACK)
 
+textrect = text_line1.get_rect()
+screen.blit(text_line1, textrect.get_width / 3) #the second parameter may not work (at this point)
+
 
 pygame.display.set_caption('AuctionBox_Video')
 while True: #main loop
