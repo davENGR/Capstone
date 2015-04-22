@@ -6,10 +6,8 @@ And when new values are read in, the previous values are then feed to the next R
 
 """Written by David Wesson and Cooper Duncan"""
 
-import serial
-import time
+import serial, time, pygame, sys
 import RPi.GPIO as GPIO
-import pygame, sys
 from pygame.locals import *
 pygame.init()
 
