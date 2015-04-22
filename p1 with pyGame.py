@@ -9,7 +9,8 @@ And when new values are read in, the previous values are then feed to the next R
 import serial
 import time
 import RPi.GPIO as GPIO
-import pygame
+import pygame, sys
+from pygame.locals import *
 pygame.init()
 
 TIMEOUT = 1.0 # 1 second timeout for reading UART
@@ -19,11 +20,12 @@ mode_pin = 17 # Pin 11 on Pi. Used for Texas/Oklahoma selection
 ready_pin = 2 # Pin 3 on Pi. Used to tell when 2nd Pi is ready
 debug_led = 18 # Pin 12 on Pi. Used for debugging
 
-SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 800 #common values seen passed for these variables
+SCREEN_HEIGHT = 600
 
 #to set the screen to fullscreen mode
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN, 32)
+screen.fill((255,255,255))#sets the background to RED
 
 # Returns a string value to send to the 2nd Pi
 # "t\nweightvalue\nheadvalue\navgvalue where t is for Texas output (replace with o for Oklahoma)
@@ -121,6 +123,12 @@ def main():
 	
 		
 	while True:
+		#verify that the user is not exitting the system
+		if pygame.event == QUIT
+			pygame.quit()
+			sys.exit()
+		#otherwise continue
+		
 		mode = check_mode()
 		#If the mode has changed update both displays
 		if b_Oklahoma != mode :
